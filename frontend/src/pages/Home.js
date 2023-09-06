@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CommonCard from "../components/CommonCard";
 import HomeCard from "../components/HomeCard";
 import { GrPrevious, GrNext } from "react-icons/gr";
 import { useRef } from "react";
-import FilterProduct from "../components/FilterProduct";
 import AllProduct from "../components/AllProduct";
 
 const Home = () => {
@@ -38,6 +36,7 @@ const Home = () => {
             <p className="text-sm font-medium text-slate-900">Bike Delivery</p>
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCU9VPqnT07U0kzDQVF4L5gpvgo_h_LAau2Q&usqp=CAU"
+              alt=""
               className="h-7"
             />
           </div>
@@ -112,8 +111,8 @@ const Home = () => {
                   />
                 );
               })
-            : loadingArrayFeature.map((el) => (
-                <CommonCard loading="Loading..." />
+            : loadingArrayFeature.map((el, index) => (
+                <CommonCard loading="Loading..." key={index} />
               ))}
         </div>
       </div>

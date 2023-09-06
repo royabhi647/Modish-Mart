@@ -1,7 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { addCartItem } from "../redux/Features/ProductSlice";
+import { useDispatch } from "react-redux";
 
 const CommonCard = ({ image, name, price, category, loading, id }) => {
+  const dispatch = useDispatch();
+  const handleAddCartProduct = () => {
+    dispatch(
+      addCartItem({
+        _id: id,
+        name: name,
+        price: price,
+        category: category,
+        image: image,
+      })
+    );
+  };
   return (
     <div className="w-full min-w-[200px] max-w-[200px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col">
       {name && image && price && category ? (
@@ -21,10 +35,13 @@ const CommonCard = ({ image, name, price, category, loading, id }) => {
               <span className="text-red-500">₹</span>
               <span>{price}</span>
             </p>
-            <button className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full">
-              Add Cart
-            </button>
           </Link>
+          <button
+            className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full"
+            onClick={handleAddCartProduct}
+          >
+            Add Cart
+          </button>
         </>
       ) : (
         <div className="min-h-[150px] flex justify-center items-center">
