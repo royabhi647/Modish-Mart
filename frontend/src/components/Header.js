@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assest/logo.png";
+// import logo from "../assest/logo.png";
+import logo from "../assest/Ecommerce-Logo.png";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { BsCartFill } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
@@ -27,7 +28,7 @@ const Header = () => {
       {/* desktop */}
       <div className="flex items-center h-full justify-between">
         <Link to={""}>
-          <div className="h-10">
+          <div className="h-14">
             <img src={logo} className="h-full" />
           </div>
         </Link>

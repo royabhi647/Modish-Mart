@@ -9,6 +9,7 @@ const AllProduct = ({ heading }) => {
   //   console.log(categoryList);
 
   // filter data display
+  const [activeFilter, setActiveFilter] = useState("");
   const [dataFilter, setDataFilter] = useState([]);
 
   useEffect(() => {
@@ -16,6 +17,7 @@ const AllProduct = ({ heading }) => {
   }, [allProduct]);
 
   const handleFilterProduct = (category) => {
+    setActiveFilter(category);
     const filter = allProduct.filter(
       (el) => el.category.toLowerCase() === category.toLowerCase()
     );
@@ -35,6 +37,7 @@ const AllProduct = ({ heading }) => {
             return (
               <FilterProduct
                 category={el}
+                isActive={el.toLowerCase() == activeFilter.toLowerCase()}
                 onClick={() => handleFilterProduct(el)}
               />
             );
