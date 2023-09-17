@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv").config();
+const Stripe = require("stripe");
 
 const app = express();
 app.use(express.json({ limit: "10mb" }));
@@ -106,6 +107,47 @@ app.post("/uploadProduct", async (req, res) => {
 app.get("/product", async (req, res) => {
   const data = await productModel.find({});
   res.send(JSON.stringify(data));
+});
+
+// payment get-way
+
+// console.log(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+app.post("/checkout-payment", async (req, res) => {
+  // console.log("body data", req.body);
+  try {
+    const params = {
+      submit_type: "pay",
+      mode: "payment",
+      payment_method_types: ["card"],
+      billing_address_collection: "auto",
+      shipping_options: [{ shipping_rate: "shr_1NrEQxSACskp9GIg2GYepGRe" }],
+      line_items: req.body.map((item) => {
+        return {
+          price_data: {
+            currency: "inr",
+            product_data: {
+              name: item.name,
+              // images: [item.image],
+            },
+            unit_amount: item.price * 100,
+          },
+          adjustable_quantity: {
+            enabled: true,
+            minimum: 1,
+          },
+          quantity: item.qty,
+        };
+      }),
+      success_url: `${process.env.FRONTEND_URL}/success`,
+      cancel_url: `${process.env.FRONTEND_URL}/cancel`,
+    };
+    const session = await stripe.checkout.sessions.create(params);
+    // console.log("session", session);
+    res.status(200).json(session.id);
+  } catch (err) {
+    res.status(err.statusCode || 500).json(err.message);
+  }
 });
 
 app.listen(PORT, () => {
