@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.productSlice.cartItems);
-  console.log("cartItems", cartItems);
+  // console.log("cartItems", cartItems);
 
   const totalPrice = cartItems.reduce(
     (acc, curr) => acc + parseInt(curr.total),

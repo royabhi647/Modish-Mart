@@ -7,7 +7,7 @@ import AllProduct from "../components/AllProduct";
 
 const Home = () => {
   const allProduct = useSelector((state) => state.productSlice.productList);
-  console.log("allProduct", allProduct);
+  // console.log("allProduct", allProduct);
   const homeProductCardList = allProduct.slice(1, 5);
   const homeProductCardListVegetables = allProduct.filter(
     (el) => el.category === "vegetable",

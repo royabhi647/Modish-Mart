@@ -33,7 +33,7 @@ const productSlice = createSlice({
     },
     deleteCartItem: (state, action) => {
       const { id, name } = action.payload;
-      console.log("state", id, name);
+      // console.log("state", id, name);
       toast(name + " item is deleted from cart");
       const filteredDeletedItems = state.cartItems.filter(
         (el) => el._id !== id

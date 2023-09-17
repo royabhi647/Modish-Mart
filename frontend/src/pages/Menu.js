@@ -10,7 +10,7 @@ const Menu = () => {
   const allProduct = useSelector((state) => state.productSlice.productList);
 
   const productDisplay = allProduct.filter((el) => el._id === filterby)[0];
-  console.log("productDisplay", productDisplay);
+  // console.log("productDisplay", productDisplay);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
