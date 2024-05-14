@@ -21,14 +21,11 @@ const CartProduct = ({ id, name, image, category, qty, total, price }) => {
     dispatch(decreaseQty(id));
   };
 
-  const allCartProducts = useSelector((state) => state.productSlice.cartItems);
-  const checkProduct = allCartProducts.find((el) => el._id === id);
-  const totalQty = checkProduct.qty;
 
   return (
     <div className="bg-slate-200 p-2 flex gap-4 rounded border border-slate-300">
       <div className="p-3 bg-white rounded overflow-hidden">
-        <img src={image} className="h-28 w-40 object-cover" />
+        <img src={image} alt="" className="h-28 w-40 object-cover" />
       </div>
       <div className="flex flex-col gap-1 w-full">
         <div className="flex justify-between">
@@ -67,7 +64,6 @@ const CartProduct = ({ id, name, image, category, qty, total, price }) => {
             <p>Total : </p>
             <p>
               <span className="text-red-500">₹</span>
-              {/* {total * totalQty} */}
               {total}
             </p>
           </div>

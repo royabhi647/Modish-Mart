@@ -14,7 +14,7 @@ function App() {
       // console.log("resData", resData);
       dispatch(setDataProduct(resData));
     })();
-  }, []);
+  }, [dispatch]);
   return (
     <div>
       <Toaster />

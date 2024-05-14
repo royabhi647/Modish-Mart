@@ -4,7 +4,7 @@ import { BiShow, BiHide } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginRedux } from "../redux/Features/UserSlice";
 
 const Login = () => {
@@ -44,7 +44,7 @@ const Login = () => {
       const dataRes = await fetchData.json();
       // console.log(dataRes);
       toast(dataRes.message);
-      if (dataRes.alert == true) {
+      if (dataRes.alert === true) {
         dispatch(loginRedux(dataRes.data));
         setTimeout(() => {
           navigate("/");
@@ -58,7 +58,7 @@ const Login = () => {
     <div className="p-3 md:p-4">
       <div className="w-full max-w-sm bg-white m-auto flex flex-col p-4">
         <div className="w-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto">
-          <img src={personImg} className="w-full" />
+          <img src={personImg} alt="" className="w-full" />
         </div>
 
         <form className="w-full py-3 flex flex-col" onSubmit={handleSubmit}>

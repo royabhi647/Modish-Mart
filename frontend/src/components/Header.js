@@ -29,7 +29,7 @@ const Header = () => {
       <div className="flex items-center h-full justify-between">
         <Link to={""}>
           <div className="h-14">
-            <img src={logo} className="h-full" />
+            <img src={logo} alt="" className="h-full" />
           </div>
         </Link>
 
@@ -54,7 +54,7 @@ const Header = () => {
           >
             <div className="text-3xl cursor-pointer h-10 w-10 rounded-full overflow-hidden drop-shadow-md flex items-center">
               {userData.image ? (
-                <img src={userData.image} className="h-full w-full" />
+                <img src={userData.image} alt="" className="h-full w-full" />
               ) : (
                 <HiOutlineUserCircle />
               )}

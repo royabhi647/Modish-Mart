@@ -79,6 +79,7 @@ const SignUp = () => {
         <div className="w-20 h-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto relative">
           <img
             src={data.image ? data.image : personImg}
+            alt=""
             className="w-full h-full"
           />
           <label htmlFor="profileImage">
