@@ -2,7 +2,7 @@ import React from "react";
 import { TbPlus, TbMinus } from "react-icons/tb";
 import { AiFillDelete } from "react-icons/ai";
 import { deleteCartItem } from "../redux/Features/ProductSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { increaseQty } from "../redux/Features/ProductSlice";
 import { decreaseQty } from "../redux/Features/ProductSlice";
 
